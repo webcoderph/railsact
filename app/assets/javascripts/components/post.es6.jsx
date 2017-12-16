@@ -24,7 +24,7 @@ class Post extends React.Component {
       }
     };
 
-    $.post('/posts',data, function(c){
+    $.post('/api/v1/posts',data, function(c){
       alert("save");
     });
     console.log(this.state);
@@ -34,20 +34,20 @@ class Post extends React.Component {
     return (
     <div className="row">
       <h4>Create a  post</h4>
-     <form onSubmit={this.handleSubmit}>
-      <div className="form-group">
-        <label>Title</label>
-	<input type="text" className="form-control" placeholder="title" value={this.state.title} onChange={this.handleTitle}/>
-      </div>
-      <div className="form-group">
-        <label>Content</label>
-	<textarea className="form-control" rows="10" placeholder="content" value={this.state.content} onChange={this.handleContent}></textarea>
-      </div>
-      <div className="form-group">
-        <button className="btn btn-primary" >Publish</button>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <div className="form-group">
+          <label>Title</label>
+	  <input type="text" className="form-control" placeholder="title" value={this.state.title} onChange={this.handleTitle}/>
+        </div>
+        <div className="form-group">
+          <label>Content</label>
+	  <textarea className="form-control" rows="10" placeholder="content" value={this.state.content} onChange={this.handleContent}></textarea>
+        </div>
+        <div className="form-group">
+          <button className="btn btn-primary" >Publish</button>
+        </div>
       </form>
-      </div>
+    </div>
     );
   }
 }
