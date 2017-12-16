@@ -1,0 +1,19 @@
+<h3><%= @post.title %></h3>
+<p><%= @post.content %></p>
+<p>&nbsp;</p>
+<h3>Comments</h3>
+<ul>
+<% @post.comments.each do |comment| %>
+  <li><%= comment.message %></li>
+<% end %>
+</ul>
+<hr>
+<%= form_for [@post,Comment.new] do |f| %>
+  <div class="form-group">
+  <%= f.label :message %>
+  <%= f.text_area :message, class: "form-control" %>
+  </div>
+   <div class="form-group">
+  <%= f.submit 'Send', class: "btn btn-primary"%>
+  </div>
+<% end %>
