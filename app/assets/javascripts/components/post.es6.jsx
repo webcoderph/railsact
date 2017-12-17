@@ -20,12 +20,13 @@ class Post extends React.Component {
     const data = {
       post: {
         title: this.state.title,
-	content: this.state.content
+	content: this.state.content,
+	authenticity_token: this.props.authenticity_token	
       }
     };
 
     $.post('/api/v1/posts',data, function(c){
-      alert("save");
+     
     });
     console.log(this.state);
   }
@@ -35,6 +36,7 @@ class Post extends React.Component {
     <div className="row">
       <h4>Create a  post</h4>
       <form onSubmit={this.handleSubmit}>
+        <input type="hidden" name="authenticity_token" value={this.props.authenticity_token} />
         <div className="form-group">
           <label>Title</label>
 	  <input type="text" className="form-control" placeholder="title" value={this.state.title} onChange={this.handleTitle}/>
